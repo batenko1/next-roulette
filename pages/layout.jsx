@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import io from 'socket.io-client';
 import Header from "@/pages/components/header.jsx";
 import Chat from "@/pages/components/chat.jsx";
 
@@ -15,6 +16,16 @@ const Layout = ({children}) => {
 
         fetchData()
     }, [])
+
+    useEffect(() => {
+        const socket = io('http://localhost:3000');
+
+        // Handle events, e.g., socket.on('message', (data) => { ... });
+
+        return () => {
+            socket.disconnect();
+        };
+    }, []);
 
     return (
         <section>

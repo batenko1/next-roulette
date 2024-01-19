@@ -25,6 +25,9 @@ npx create-next-app@latest
 * npm i @reduxjs/toolkit
 * npm install axios mongoose
 * npm install mongoose dotenv
+* npm install socket.io
+* npm install socket.io-client
+* npm install concurrently
 
 
 ---
