@@ -1,30 +1,25 @@
-import {useEffect} from "react";
-import store from "../state/store";
 import {Provider} from "react-redux";
-
-import Layout from "./layout.jsx";
-import '../app/globals.css'
-
+import {I18nextProvider} from "react-i18next";
+import i18n from "../utils/i18n";
 import {config} from 'dotenv';
 
 config();
-export default function RootLayout({Component, pageProps}) {
 
-    useEffect(() => {
-        const theme = localStorage.getItem('theme')
-        document.body.className = theme ? 'body--dark' : '';
-    });
+import store from "../state/store";
+import Layout from "./layout.jsx";
+
+function RootLayout({Component, pageProps}) {
 
 
     return (
-
         <Provider store={store}>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <I18nextProvider i18n={i18n}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </I18nextProvider>
         </Provider>
-
-
-
     )
 }
+
+export default RootLayout

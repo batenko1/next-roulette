@@ -1,10 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
-import settings from "./settingReducer";
+import settings from "./settingSlice";
+import messages from "./messagesSlice";
 
 
 const store = configureStore({
     reducer: {
-        settings:settings
+        settings,
+        messages
     }
 })
 

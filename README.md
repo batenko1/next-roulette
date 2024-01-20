@@ -28,6 +28,8 @@ npx create-next-app@latest
 * npm install socket.io
 * npm install socket.io-client
 * npm install concurrently
+* npm i react-i18next
+* npm install next-iron-session
 
 
 ---

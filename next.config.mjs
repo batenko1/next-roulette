@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    reactStrictMode: false,
     env: {
         MONGODB_URI: process.env.MONGODB_URI,
+        SESSION_PASSWORD: process.env.SESSION_PASSWORD
     },
 };
 
