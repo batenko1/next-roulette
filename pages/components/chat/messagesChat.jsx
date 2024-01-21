@@ -40,4 +40,6 @@ const MessagesChat = React.memo(() => {
     )
 })
 
+MessagesChat.displayName = 'MessagesChat';
+
 export default MessagesChat;
