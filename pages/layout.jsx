@@ -1,13 +1,14 @@
 import {useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
-import io from 'socket.io-client';
+import {useSelector, useDispatch} from "react-redux";
 import Header from "@/pages/components/header.jsx";
 import WrapperChat from "@/pages/components/chat/wrapperChat";
 import {selectThemeCss} from "@/state/settingSlice.js";
+import {setupSocketListeners} from "@/utils/sockets.js";
 
 
 const Layout = ({children}) => {
 
+    const dispatch = useDispatch()
 
     const [user, setUser] = useState(null)
 
@@ -24,14 +25,8 @@ const Layout = ({children}) => {
     }, [])
 
     useEffect(() => {
-        const socket = io('http://localhost:3000');
-
-        // Handle events, e.g., socket.on('message', (data) => { ... });
-
-        return () => {
-            socket.disconnect();
-        };
-    }, []);
+        dispatch(setupSocketListeners())
+    }, [dispatch]);
 
     return (
         <section>

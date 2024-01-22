@@ -1,4 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import io from 'socket.io-client';
+import {socket} from "@/utils/sockets.js";
 
 
 const initialState = {
@@ -60,7 +62,9 @@ const slice = createSlice({
     name: 'messages',
     initialState,
     reducers: {
-
+        insertMessage: (state, action) => {
+            state.messages.push(action.payload.createdDocument)
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -68,6 +72,7 @@ const slice = createSlice({
 
             })
             .addCase(sendMessage.fulfilled, (state, action) => {
+                socket.emit('dataUpdated', action.payload.createdDocument);
                 state.messages.push(action.payload.createdDocument)
             })
             .addCase(sendMessage.rejected, (state, action) => {
@@ -89,3 +94,5 @@ const slice = createSlice({
 export default slice.reducer
 
 export const selectMessages = (state) => state.messages.messages;
+
+export const {insertMessage} = slice.actions
