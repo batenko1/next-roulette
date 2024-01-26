@@ -137,7 +137,9 @@ const Header = () => {
                                 <li>
                                     <Link href="/account/">Профиль</Link>
                                 </li>
-                                <li><a href="/account#history">История игр</a></li>
+                                <li>
+                                    <Link href="/account#history">История игр</Link>
+                                </li>
                                 <li>
                                     <Link href="/account/daily-bonus">Ежедневный бонус</Link>
                                 </li>
