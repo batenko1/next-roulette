@@ -4,22 +4,35 @@ import Header from "@/pages/components/header.jsx";
 import WrapperChat from "@/pages/components/chat/wrapperChat";
 import {selectThemeCss} from "@/state/settingSlice.js";
 import {setupSocketListeners} from "@/utils/sockets.js";
+import {setUser} from "@/state/userSlice.js";
+
+import WrapperPopup from "@/pages/components/popups/wrapperPopup.jsx";
 
 
 const Layout = ({children}) => {
 
     const dispatch = useDispatch()
 
-    const [user, setUser] = useState(null)
-
     const themeCss = useSelector(selectThemeCss)
 
     useEffect(() => {
+
+        const token = localStorage.getItem('token')
         const fetchData = async () => {
-            const response = await fetch('/api/users');
-            const result = await response.json();
-            setUser(result.data);
-        };
+            await fetch('/api/user', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            }).then(response => response.json())
+                .then(data => {
+                    if(!data.message) {
+                        setUser(data)
+                    }
+                }).catch(() => {
+                    console.log('here')
+                })
+        }
 
         fetchData()
     }, [])
@@ -30,12 +43,13 @@ const Layout = ({children}) => {
 
     return (
         <section>
-            <link rel="stylesheet" type="text/css" href={themeCss} />
-            <Header></Header>
+            <link rel="stylesheet" type="text/css" href={themeCss}/>
+            <Header/>
             <main id="layout" className="main">
-                <WrapperChat></WrapperChat>
+                <WrapperChat/>
                 {children}
             </main>
+            <WrapperPopup/>
         </section>
     )
 };

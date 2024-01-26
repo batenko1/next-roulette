@@ -1,11 +1,11 @@
-"use client";
-import {useRef, useEffect} from "react";
+import {useRef, useEffect, useState} from "react";
 import MessagesChat from "@/pages/components/chat/messagesChat.jsx";
 import FormChat from "@/pages/components/chat/formChat";
 
 const WrapperChat = () => {
 
     const wrapperChat = useRef(null)
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,7 +30,7 @@ const WrapperChat = () => {
                 <a href="#" data-izimodal-open="#chatRules"
                    data-izimodal-transitionin="fadeInDown"
                    className="chat__rules">Правила чата</a>
-                <div className="chat__close"></div>
+                <div onClick={() => setToggle(!toggle)} className="chat__close"></div>
             </div>
 
             <div className="chat__body"

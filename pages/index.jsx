@@ -1,10 +1,21 @@
-import Image from "next/image.js";
+import {useDispatch} from "react-redux";
+import Image from "next/image";
 import GooglePlay from '../public/images/google-play.png'
 import Avatar from '../public/images/winner.png'
 import GameCircle from '../public/images/new-game-circle.png'
 import TimeOutCircle from '../public/images/time-out-circle.png'
 
+
+import Balance from "@/pages/components/sidebar/balance.jsx";
+import Help from "@/pages/components/sidebar/help.jsx";
+import Notification from "@/pages/components/sidebar/notification.jsx";
+import Copyright from "@/pages/components/sidebar/copyright.jsx";
+import {setPopup} from "@/state/popupSlice.js";
+
 export default function Home() {
+
+    const dispatch = useDispatch()
+
     return (
         <>
             <div className="main__left">
@@ -41,60 +52,24 @@ export default function Home() {
                             </div>
                         </div>
                         <a className="button button--gradient bank__button"
-                           data-izimodal-open="#betModal"
-                           data-izimodal-transitionin="fadeInDown">СДЕЛАТЬ СТАВКУ</a>
+                            onClick={() => dispatch(setPopup('jackpot-bet'))}
+                        >СДЕЛАТЬ СТАВКУ</a>
                     </div>
                 </div>
 
-                <div className="balance">
-                    <p className="balance__title">Баланс:</p>
-                    <p className="balance__value">0<span>COINS</span></p>
-                    <div className="balance__action">
-                        <a className="button balance__input"
-                           data-izimodal-open="#inputModal"
-                           data-izimodal-transitionin="fadeInDown">ПОПОЛНИТЬ</a>
+                <Balance/>
 
-                        <a className="button button--gray balance__output"
-                           data-izimodal-open="#outputModal"
-                           data-izimodal-transitionin="fadeInDown">ВЫВЕСТИ</a>
-                    </div>
-                </div>
+                <Help/>
 
+                <Notification/>
 
-                <div className="help">
-                    <p className="help__title">Помощь</p>
-                    <a className="help__link" data-izimodal-open="#helpModal" data-izimodal-transitionin="fadeInDown">
-                        <i className="ic-rules"></i>
-                        Правила игры
-                    </a>
-                </div>
+                <Copyright/>
 
-                <div className="notification">
-                    <p className="notification__title">Звуковые уведомления</p>
-                    <form className="notification__form">
-                        <label className="notification__radio">
-                            <input type="radio" id="isMusic" name="sound"/>
-                            <span className="notification__check"></span>
-                            <span className="notification__name">Включить</span>
-                        </label>
-                        <label className="notification__radio">
-                            <input type="radio" id="isMusic" name="sound"/>
-                            <span className="notification__check"></span>
-                            <span className="notification__name">Выключить</span>
-                        </label>
-                    </form>
-                </div>
-
-                <div className="copyright @if(isset($isMobile)) mobile-show @endif">
-                    <p className="copyright__text">Копирование элементов дизайна с сайта без согласия запрещено! <br/>
-                        &copy;FOX-X.RU 2024</p>
-                </div>
 
                 <div className="application">
                     <p className="application__title">Мобильное приложение</p>
                     <a href="#" className="application__link">
                         <Image src={GooglePlay} height="54" alt="test"></Image>
-                        {/*<img src="/img/google-play.png" alt="google-play"/>*/}
                     </a>
                 </div>
 
@@ -129,7 +104,7 @@ export default function Home() {
                     <div className="bank__body">
                         <div className="bank__circle">
                             <div className="bank__circle-inside">
-                                <p className="bank__value">@if($game) 100 @else 0 @endif
+                                <p className="bank__value">100
                                     <span>COINS</span>
                                 </p>
                             </div>
@@ -221,13 +196,13 @@ export default function Home() {
                         className="jackpot-history-bottom message-start-game">
                         <div className="jackpot-history-bottom__left">
                             <Image src={GameCircle} className="jackpot-history__img" alt="site"></Image>
-                                <div className="jackpot-history__wrap">
-                                    <p className="jackpot-history__title">Игра началась, делайте ваши депозиты</p>
-                                    <p className="jackpot-history__hash">Хэш раунда Sha224 <a
-                                        href="#"
-                                        target="blank">Test</a>
-                                    </p>
-                                </div>
+                            <div className="jackpot-history__wrap">
+                                <p className="jackpot-history__title">Игра началась, делайте ваши депозиты</p>
+                                <p className="jackpot-history__hash">Хэш раунда Sha224 <a
+                                    href="#"
+                                    target="blank">Test</a>
+                                </p>
+                            </div>
                         </div>
                         <div className="jackpot-history-bottom__right ">
                             <a data-izimodal-open="#betModal" data-izimodal-transitionin="fadeInDown"
@@ -238,19 +213,20 @@ export default function Home() {
                         <div className="nano-content">
                             <div className="jackpot-history-top">
                                 <Image src={TimeOutCircle} className="jackpot-history__img" alt="site"></Image>
-                                    <div className="jackpot-history__wrap">
-                                        <p className="jackpot-history__title">ВРЕМЯ СТАВОК ИСТЕКЛО</p>
-                                        <p className="jackpot-history__hint">Игра уже начинается!</p>
-                                    </div>
+                                <div className="jackpot-history__wrap">
+                                    <p className="jackpot-history__title">ВРЕМЯ СТАВОК ИСТЕКЛО</p>
+                                    <p className="jackpot-history__hint">Игра уже начинается!</p>
+                                </div>
                             </div>
                             <ul className="jackpot-history__list">
 
                                 <li className="jackpot-history__item history-item history-item--1">
                                     <div className="history-item__left">
-                                        <Image src={Avatar} width="48" className="history-item__avatar" alt="site"></Image>
-                                            <div className="history-item__wrap">
-                                                <p className="history-item__name">Vlad</p>
-                                            </div>
+                                        <Image src={Avatar} width="48" className="history-item__avatar"
+                                               alt="site"></Image>
+                                        <div className="history-item__wrap">
+                                            <p className="history-item__name">Vlad</p>
+                                        </div>
                                     </div>
                                     <div className="history-item__right">
                                         <p className="history-item__value">100 &nbsp;
@@ -267,6 +243,8 @@ export default function Home() {
 
 
             </div>
+
+
         </>
     )
 }

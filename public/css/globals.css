@@ -817,7 +817,7 @@ template {
 }
 
 .iziModal-overlay {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -1963,7 +1963,8 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    position: relative
+    position: relative;
+    width:100%;
 }
 
 .main--hidden {
@@ -9290,4 +9291,115 @@ body {
 
 #referralTable .paginations__list .paginations__link--back, #referralTable .paginations__list .paginations__link--next {
     display: none;
+}
+
+.iziModal {
+    z-index: 999;
+    border-radius: 6px;
+    max-width: 600px;
+    margin-top: 50px;
+    min-height:250px;
+    height: max-content;
+}
+
+.iziModal.active {
+    display: block;
+}
+
+
+#auth span, #authLogin span, #authRegistration span, #authLogin a, #authRegistration a {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#authLogin a, #authRegistration a {
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+
+#auth, #authRegistration {
+    padding: 20px;
+}
+
+#authLogin input[type="text"], #authLogin input[type="password"], #authRegistration input[type="text"], #authRegistration input[type="password"] {
+    width:200px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    border:1px solid #ccc;
+    outline: none;
+    height: 35px;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+#authLogin li, #authRegistration li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    width:200px;
+}
+
+
+#authRegistration {
+    padding-bottom: 40px;
+    height: 450px !important;
+}
+
+#authRegistration input[type="submit"], #authLogin input[type="submit"] {
+    max-width: 100px;
+    text-align: center;
+    color: #fff;
+    font-family: MyriadPro-Bold;
+    font-size: 13px;
+    line-height: 49px;
+    height: 49px;
+    padding: 0 15px;
+    letter-spacing: .33px;
+    -webkit-box-shadow: 0 4px 18px rgba(235,180,47,.15);
+    box-shadow: 0 4px 18px rgba(235,180,47,.15);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #ffb83a;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-transition: .3s;
+    transition: .3s;
+    border:none;
+    margin:10px auto 0;
+    display: block;
+}
+
+#authLogin form, #authRegistration form {
+    text-align: center;
+}
+
+.error-message {
+    color:red;
+    font-size: 13px;
+    display: block;
+    padding-bottom: 10px;
+
+}
+
+#auth ul {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#auth ul li {
+    display: inline-block;
+}
+
+#auth {
+    height:250px !important;
+}
+
+.iziModal-overlay.active {
+    background-color: rgba(254, 254, 254, 0.9);
+    z-index: 997;
+    display: block;
 }

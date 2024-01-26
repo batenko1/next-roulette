@@ -1,12 +1,26 @@
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Image from "next/image";
 import Link from 'next/link'
 import useTheme from "@/hooks/useTheme.js";
 import Logo from "../../public/images/logo.png"
-
+import {setPopup} from "@/state/popupSlice.js";
+import {setUser, selectUser} from "@/state/userSlice.js";
 
 
 const Header = () => {
-    const { toggleTheme } = useTheme();
+    const {toggleTheme} = useTheme();
+    const dispatch = useDispatch()
+    const user = useSelector(selectUser)
+    const [toggle, setToggle] = useState(false)
+
+    const handleLogout = () => {
+
+        localStorage.removeItem('token')
+        setUser(null)
+        // location.reload()
+
+    }
 
     return (
         <header className="header">
@@ -84,47 +98,59 @@ const Header = () => {
 
             </div>
 
-            <a className="button chat__bottom-button btn-registration" data-izimodal-open="#auth"
-               data-izimodal-transitionin="fadeInDown">ВОЙТИ</a>
-
-
-            {false ?? (
-                <div className="header__right user">
-                    <div className="user__ava">
-                        <img src="" alt="avatar"/>
-                    </div>
-                    <div className="user__info">
-                        <span className="user__level">10 LVL.</span>
-                        <span className="user__exp">1 EXP.</span>
-                    </div>
-                    <div className="user__left">
-                        <a className="user__open">
-                            <i className="ic-burger"></i>
-                        </a>
-                        <a className="user__close">
-                            <i className="ic-close"></i>
-                        </a>
-                    </div>
-                    <div className="user__dropdown dropdown">
-                        <div className="dropdown__top">
-                            <p className="dropdown__level">1 LEVEL.</p>
-
-                            <p className="dropdown__exp">10 / <span>1000 EXP.</span></p>
-                            <div className="dropdown__timeline"></div>
+            {!user ?
+                (
+                    <a className="button chat__bottom-button btn-registration"
+                       onClick={() => dispatch(setPopup('auth'))}
+                    >ВОЙТИ</a>
+                )
+                :
+                (
+                    <div className="header__right user">
+                        <div className="user__ava">
+                            <img src="" alt="avatar"/>
                         </div>
-                        <ul className="dropdown__menu">
-                            <li><a href="#">Профиль</a></li>
-                            <li><a href="#">История игр</a></li>
-                            <li><a href="#">Ежедневный бонус</a></li>
-                            <li><a data-izimodal-open="#outputModal" data-izimodal-transitionin="fadeInDown">Вывести средства <i
-                                className="ic-coin"></i></a></li>
-                            <li><a href="#">Промокоды</a></li>
-                            <li><a href="#">Выйти</a></li>
-                        </ul>
-                    </div>
-                </div>
-            )}
+                        <div className="user__info">
+                            <span className="user__level">10 LVL.</span>
+                            <span className="user__exp">1 EXP.</span>
+                        </div>
+                        <div className="user__left">
+                            <a className="user__open"
+                               style={toggle ? {display: 'none'}: {}}
+                               onClick={() => setToggle(!toggle)}>
+                                <i className="ic-burger"></i>
+                            </a>
+                            <a className="user__close"
+                               onClick={() => setToggle(!toggle)}
+                               style={toggle ? {display: 'block'}: {}}>
+                                <i className="ic-close"></i>
+                            </a>
+                        </div>
+                        <div className="user__dropdown dropdown" style={toggle ? {display: 'block'}: {}}>
+                            <div className="dropdown__top">
+                                <p className="dropdown__level">1 LEVEL.</p>
 
+                                <p className="dropdown__exp">10 / <span>1000 EXP.</span></p>
+                                <div className="dropdown__timeline"></div>
+                            </div>
+                            <ul className="dropdown__menu">
+                                <li>
+                                    <Link href="/account/">Профиль</Link>
+                                </li>
+                                <li><a href="/account#history">История игр</a></li>
+                                <li>
+                                    <Link href="/account/daily-bonus">Ежедневный бонус</Link>
+                                </li>
+                                <li><a data-izimodal-open="#outputModal" data-izimodal-transitionin="fadeInDown">Вывести
+                                    средства <i
+                                        className="ic-coin"></i></a></li>
+                                <li><a href="#">Промокоды</a></li>
+                                <li><a href="#" onClick={handleLogout}>Выйти</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                )
+            }
 
         </header>
     )

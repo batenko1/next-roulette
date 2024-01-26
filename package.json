@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"next dev\" \"node server.js\"",
+    "dev": "concurrently \"next dev\" \"nodemon server.js\"",
     "nodemon": "nodemon --loader esm pages/_app.jsx",
     "build": "next build",
     "start": "next start",
@@ -13,11 +13,14 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.5",
+    "bcrypt": "^5.1.1",
     "concurrently": "^8.2.2",
     "dotenv": "^16.3.1",
     "esm": "^3.2.25",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.8",
     "next": "14.1.0",
+    "next-auth": "^4.24.5",
     "nodemon": "^3.0.3",
     "react": "^18",
     "react-dom": "^18",

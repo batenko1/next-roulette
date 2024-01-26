@@ -35,7 +35,7 @@ const MessagesChat = React.memo(() => {
                                 <span className="message__value">10</span>
                             </div>
                             <p className="message__name message__name--icon">
-                                <i className="@if($message->account->role_id == 4) ic-youtube @endif"></i> Vlad</p>
+                                <i className="ic-youtube"></i> Vlad</p>
                             <span className="message__time">14.30</span>
                         </div>
                         <div className="message__body">

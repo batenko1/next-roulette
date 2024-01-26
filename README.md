@@ -30,6 +30,10 @@ npx create-next-app@latest
 * npm install concurrently
 * npm i react-i18next
 * npm install next-iron-session
+* npm install next-auth
+* npm install bcrypt
+* npm install jsonwebtoken
+
 
 
 ---
