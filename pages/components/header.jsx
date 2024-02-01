@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Image from "next/image";
 import Link from 'next/link'
@@ -17,7 +17,7 @@ const Header = () => {
     const handleLogout = () => {
 
         localStorage.removeItem('token')
-        setUser(null)
+        dispatch(setUser(null))
         // location.reload()
 
     }

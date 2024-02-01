@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import Header from "@/pages/components/header.jsx";
 import WrapperChat from "@/pages/components/chat/wrapperChat";
@@ -27,7 +27,7 @@ const Layout = ({children}) => {
             }).then(response => response.json())
                 .then(data => {
                     if(!data.message) {
-                        setUser(data)
+                        dispatch(setUser(data))
                     }
                 }).catch(() => {
                     console.log('here')

@@ -5,17 +5,17 @@ import Copyright from "@/pages/components/sidebar/copyright.jsx";
 const CoinFlip = () => {
     return (
         <>
-            <div class="main__left">
+            <div className="main__left">
 
 
-                <div class="create-game">
-                    <div class="create-game__info">
-                        <p class="create-game__title">Новая игра:</p>
+                <div className="create-game">
+                    <div className="create-game__info">
+                        <p className="create-game__title">Новая игра:</p>
                     </div>
-                    <div class="create-game__body">
+                    <div className="create-game__body">
 
 
-                        <a href="javascript:void(0);" data-izimodal-open="#createGame"
+                        <a href="#" data-izimodal-open="#createGame"
                            data-izimodal-transitionin="fadeInDown" className="create-game__button">
                             <span>+</span><br/>
                             Создать<br/> игру
@@ -43,7 +43,7 @@ const CoinFlip = () => {
                     </div>
                     <div className="create-game__body">
 
-                        <a href="javascript:void(0);" data-izimodal-open="#createGame"
+                        <a href="#" data-izimodal-open="#createGame"
                            data-izimodal-transitionin="fadeInDown" className="create-game__button">
                             <span>+</span><br/>
                             Создать<br/> игру

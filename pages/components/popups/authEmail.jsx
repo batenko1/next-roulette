@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {selectPopup, setPopup} from "@/state/popupSlice.js";
+import {setUser} from "@/state/userSlice.js";
 
 const AuthEmail = () => {
 
@@ -9,6 +10,34 @@ const AuthEmail = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, password}),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                return response.json();
+            })
+            .then(({token, user}) => {
+                localStorage.setItem('token', token);
+                dispatch(setUser(user))
+                dispatch(setPopup(null))
+            }).catch(error => {
+                console.log(error)
+            })
+
+    }
 
     return (
         <div className={`modal modal--help iziModal ${popup === 'authEmail' ? 'active': ''}`} id="authLogin">
@@ -26,7 +55,7 @@ const AuthEmail = () => {
                 </ul>
 
 
-                <input type="submit" name="Зарегистрироваться"/>
+                <input type="submit" onClick={handleSubmit} name="Зарегистрироваться"/>
                 <br/>
                 <a
                     onClick={() => dispatch(setPopup('registration'))}

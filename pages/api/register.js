@@ -1,5 +1,3 @@
-import { connectToDatabase } from "@/utils/connectMongo";
-import mongoose from "mongoose";
 import User from "@/utils/models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';

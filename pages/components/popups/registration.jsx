@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {selectPopup, setPopup} from "@/state/popupSlice.js";
+import {setUser} from "@/state/userSlice.js";
 
 const Registration = () => {
 
@@ -19,7 +20,7 @@ const Registration = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        fetch('/api/register', {
+        await fetch('/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,10 +34,10 @@ const Registration = () => {
                 return response.json();
             })
             .then(data => {
-                console.log('Регистрация успешна:', data);
 
                 localStorage.setItem('token', data.token);
-                window.location.reload()
+                dispatch(setUser(data.user))
+                dispatch(setPopup(null))
 
             })
 
