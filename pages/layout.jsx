@@ -1,12 +1,12 @@
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import Header from "@/pages/components/header.jsx";
-import WrapperChat from "@/pages/components/chat/wrapperChat";
+import Header from "@/components/header.jsx";
+import WrapperChat from "@/components/chat/wrapperChat";
 import {selectThemeCss} from "@/state/settingSlice.js";
 import {setupSocketListeners} from "@/utils/sockets.js";
 import {setUser} from "@/state/userSlice.js";
 
-import WrapperPopup from "@/pages/components/popups/wrapperPopup.jsx";
+import WrapperPopup from "@/components/popups/wrapperPopup.jsx";
 
 
 const Layout = ({children}) => {

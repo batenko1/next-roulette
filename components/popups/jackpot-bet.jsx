@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 import {selectPopup} from "@/state/popupSlice.js";
 import {selectUser} from "@/state/userSlice.js";
 
-import CloseModal from "@/pages/components/popups/CloseModal.jsx";
+import CloseModal from "@/components/popups/CloseModal.jsx";
 const JackpotBet = () => {
     
     const popup = useSelector(selectPopup)

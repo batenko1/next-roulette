@@ -1,34 +1,22 @@
 import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectPopup, setPopup} from "@/state/popupSlice.js";
-import {selectUser, setUser} from "@/state/userSlice.js";
+import {useSelector} from "react-redux";
+import {useReplenish} from "@/hooks/useReplenish.js";
+import {selectPopup} from "@/state/popupSlice.js";
+import {selectUser} from "@/state/userSlice.js";
 
-import CloseModal from "@/pages/components/popups/CloseModal.jsx";
+import CloseModal from "@/components/popups/CloseModal.jsx";
 
 const Replenish = () => {
 
     const [count, setCount] = useState(0)
 
-    const dispatch = useDispatch()
-
     const popup = useSelector(selectPopup)
     const user = useSelector(selectUser)
 
+    const {replenishBalance} = useReplenish()
 
-    console.log(user)
     const handleReplenish = async () => {
-        await fetch('/api/replenish', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({count, user}),
-        }).then(response => {
-            return response.json()
-        }).then(data => {
-            dispatch(setUser({...user, balance:data.balance}))
-            dispatch(setPopup(null))
-        })
+        await replenishBalance(count, user, 1)
     }
 
     return (

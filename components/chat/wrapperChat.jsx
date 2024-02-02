@@ -1,7 +1,7 @@
 import {useRef, useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import MessagesChat from "@/pages/components/chat/messagesChat.jsx";
-import FormChat from "@/pages/components/chat/formChat";
+import MessagesChat from "@/components/chat/messagesChat.jsx";
+import FormChat from "@/components/chat/formChat";
 import {setPopup} from "@/state/popupSlice.js";
 
 const WrapperChat = () => {

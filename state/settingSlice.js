@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     theme: 'light',
-    themeCss: 'css/globals.css'
+    themeCss: '/css/globals.css'
 };
 
 const slice = createSlice({
@@ -12,7 +12,7 @@ const slice = createSlice({
     reducers: {
         setTheme: (state, action) => {
             state.theme = action.payload
-            state.themeCss = state.theme === 'dark' ? 'css/dark-globals.css' : 'css/globals.css'
+            state.themeCss = state.theme === 'dark' ? '/css/dark-globals.css' : '/css/globals.css'
         }
     }
 })

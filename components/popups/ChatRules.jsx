@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import {selectPopup} from "@/state/popupSlice.js";
-import CloseModal from "@/pages/components/popups/CloseModal.jsx";
+import CloseModal from "@/components/popups/CloseModal.jsx";
 const ChatRules = () => {
 
     const popup = useSelector(selectPopup)

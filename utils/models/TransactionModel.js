@@ -17,6 +17,10 @@ const transactionSchema = new mongoose.Schema({
     },
     game_id: {
         type:Number
+    },
+    created_at: {
+        type:Date,
+        default: () => new Date()
     }
 
 });

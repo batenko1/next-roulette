@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Balance from "@/pages/components/sidebar/balance.jsx";
-import Help from "@/pages/components/sidebar/help.jsx";
-import Notification from "@/pages/components/sidebar/notification.jsx";
-import Copyright from "@/pages/components/sidebar/copyright.jsx";
+import Balance from "@/components/sidebar/balance.jsx";
+import Help from "@/components/sidebar/help.jsx";
+import Notification from "@/components/sidebar/notification.jsx";
+import Copyright from "@/components/sidebar/copyright.jsx";
 
 import Fox from '../public/images/fox.png'
 

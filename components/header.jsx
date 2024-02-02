@@ -1,9 +1,9 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Image from "next/image";
 import Link from 'next/link'
 import useTheme from "@/hooks/useTheme.js";
-import Logo from "../../public/images/logo.png"
+import Logo from "../public/images/logo.png"
 import {setPopup} from "@/state/popupSlice.js";
 import {setUser, selectUser} from "@/state/userSlice.js";
 

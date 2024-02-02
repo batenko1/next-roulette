@@ -1,7 +1,9 @@
-import Balance from "@/pages/components/sidebar/balance.jsx";
-import Help from "@/pages/components/sidebar/help.jsx";
-import Notification from "@/pages/components/sidebar/notification.jsx";
-import Copyright from "@/pages/components/sidebar/copyright.jsx";
+import Balance from "@/components/sidebar/balance.jsx";
+import Help from "@/components/sidebar/help.jsx";
+import Notification from "@/components/sidebar/notification.jsx";
+import Copyright from "@/components/sidebar/copyright.jsx";
+
+import SliderBonus from "@/components/account/daily-bonus/SliderBonus.jsx";
 
 const DailyBonus = () => {
     return (
@@ -32,85 +34,32 @@ const DailyBonus = () => {
                             <p className="hint__text">Для открытия ежедневного бонуса достигните 3 уровня</p>
                         </div>
                     </div>
-                    <div className="get-bonus">
-                        <div className="get-bonus__body">
-                            <p className="disabled-bonus__button">
-                                Получить <br/>
-                                БОНУС
-                            </p>
-                        </div>
-                    </div>
+                    {/*<div className="get-bonus">*/}
+                    {/*    <div className="get-bonus__body">*/}
+                    {/*        <p className="disabled-bonus__button">*/}
+                    {/*            Получить <br/>*/}
+                    {/*            БОНУС*/}
+                    {/*        </p>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
 
 
-                    <div className="get-bonus">
-                        <div className="get-bonus__body">
-                            <a href="javascript:void(0);" onClick="MainFunction.getBonus();"
-                               className="get-bonus__button">
-                                Получить <br/>
-                                БОНУС
-                            </a>
-                        </div>
-                        <div className="get-bonus__bottom">
-                            <p className="get-bonus__info">У вас есть 1 бесплатный спин!</p>
-                        </div>
-                    </div>
-                    <div className="bonus">
-                        <div className="bonus__slider">
 
-                            <div className="bonus__slider-item bonus-item" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
+                    <SliderBonus/>
 
-
-                            <div className="bonus__slider-item bonus-item bonus-item--orange" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
-
-
-                            <div className="bonus__slider-item bonus-item bonus-item--lose" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
-
-
-                            <div className="bonus__slider-item bonus-item bonus-item--green" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
-
-
-                            <div className="bonus__slider-item bonus-item bonus-item--yellow" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
-
-
-                            <div className="bonus__slider-item bonus-item bonus-item--blue" data-count="1">
-                                <span className="bonus-item__value">1</span>
-                                <span className="bonus-item__coins">COINS</span>
-                            </div>
-
-                        </div>
-                        <div className="bonus__point">
-                            <i className="ic-roulette-arrow"></i>
-                        </div>
-                    </div>
-
-                    <div className="get-bonus">
-                        <div className="get-bonus__body">
-                            <p className="disabled-bonus__button">
-                                Получить <br/>
-                                БОНУС
-                            </p>
-                        </div>
-                        <div className="get-bonus__bottom">
-                            <p className="get-bonus__info">Следующий бонус будет доступен
-                                через: 24 часа</p>
-                            <p id="bonus-timer" className="get-bonus__timer"></p>
-                        </div>
-                    </div>
+                    {/*<div className="get-bonus">*/}
+                    {/*    <div className="get-bonus__body">*/}
+                    {/*        <p className="disabled-bonus__button">*/}
+                    {/*            Получить <br/>*/}
+                    {/*            БОНУС*/}
+                    {/*        </p>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="get-bonus__bottom">*/}
+                    {/*        <p className="get-bonus__info">Следующий бонус будет доступен*/}
+                    {/*            через: 24 часа</p>*/}
+                    {/*        <p id="bonus-timer" className="get-bonus__timer"></p>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
 
 
                 </div>

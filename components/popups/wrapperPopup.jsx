@@ -5,10 +5,10 @@ import {selectPopup, setPopup} from "@/state/popupSlice.js";
 import Auth from './auth'
 import AuthEmail from "./authEmail";
 import Registration from "./registration";
-import JackpotBet from "@/pages/components/popups/jackpot-bet.jsx";
-import Replenish from "@/pages/components/popups/replenish.jsx";
-import GameRules from "@/pages/components/popups/GameRules.jsx";
-import ChatRules from "@/pages/components/popups/ChatRules.jsx";
+import JackpotBet from "@/components/popups/jackpot-bet.jsx";
+import Replenish from "@/components/popups/replenish.jsx";
+import GameRules from "@/components/popups/GameRules.jsx";
+import ChatRules from "@/components/popups/ChatRules.jsx";
 
 const WrapperPopup = () => {
 

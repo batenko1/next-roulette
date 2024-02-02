@@ -5,12 +5,13 @@ export default async function handler(request, response) {
     if(request.method === 'POST') {
         try {
 
-            const { count, user } = request.body;
+            const { count, user, type } = request.body;
 
             const transaction = new Transaction({
                 user_id: user.userId,
                 price: count,
-                type_id: 1,
+                type_id:type,
+                created_at: new Date()
             })
 
             await transaction.save()

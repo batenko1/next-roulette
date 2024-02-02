@@ -6,10 +6,10 @@ import GameCircle from '../public/images/new-game-circle.png'
 import TimeOutCircle from '../public/images/time-out-circle.png'
 
 
-import Balance from "@/pages/components/sidebar/balance.jsx";
-import Help from "@/pages/components/sidebar/help.jsx";
-import Notification from "@/pages/components/sidebar/notification.jsx";
-import Copyright from "@/pages/components/sidebar/copyright.jsx";
+import Balance from "@/components/sidebar/balance.jsx";
+import Help from "@/components/sidebar/help.jsx";
+import Notification from "@/components/sidebar/notification.jsx";
+import Copyright from "@/components/sidebar/copyright.jsx";
 import {setPopup} from "@/state/popupSlice.js";
 
 export default function Home() {

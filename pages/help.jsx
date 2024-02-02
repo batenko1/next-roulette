@@ -1,7 +1,7 @@
-import Balance from "@/pages/components/sidebar/balance.jsx";
-import HelpSidebar from "@/pages/components/sidebar/help.jsx";
-import Notification from "@/pages/components/sidebar/notification.jsx";
-import Copyright from "@/pages/components/sidebar/copyright.jsx";
+import Balance from "@/components/sidebar/balance.jsx";
+import HelpSidebar from "@/components/sidebar/help.jsx";
+import Notification from "@/components/sidebar/notification.jsx";
+import Copyright from "@/components/sidebar/copyright.jsx";
 
 const Help = () => {
     return (

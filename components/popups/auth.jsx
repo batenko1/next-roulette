@@ -4,9 +4,9 @@ import Image from "next/image";
 
 import {selectPopup, setPopup} from "@/state/popupSlice.js";
 
-import IconVk from "../../../public/images/icons-vk-96.png"
-import IconFb from "../../../public/images/icons-facebook-96.png"
-import IconEmail from "../../../public/images/icons-email-96.png"
+import IconVk from "../../public/images/icons-vk-96.png"
+import IconFb from "../../public/images/icons-facebook-96.png"
+import IconEmail from "../../public/images/icons-email-96.png"
 
 const Auth = () => {
 
