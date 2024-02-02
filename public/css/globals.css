@@ -9403,3 +9403,8 @@ body {
     z-index: 997;
     display: block;
 }
+
+.output-radio__box img {
+    width:120px;
+    margin-top: 10px;
+}

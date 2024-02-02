@@ -6,6 +6,9 @@ import Auth from './auth'
 import AuthEmail from "./authEmail";
 import Registration from "./registration";
 import JackpotBet from "@/pages/components/popups/jackpot-bet.jsx";
+import Replenish from "@/pages/components/popups/replenish.jsx";
+import GameRules from "@/pages/components/popups/GameRules.jsx";
+import ChatRules from "@/pages/components/popups/ChatRules.jsx";
 
 const WrapperPopup = () => {
 
@@ -18,6 +21,11 @@ const WrapperPopup = () => {
             <AuthEmail/>
             <Registration/>
             <JackpotBet/>
+            <Replenish/>
+            <GameRules/>
+            <ChatRules/>
+
+
             <div
                 onClick={() => dispatch(setPopup(null))}
                 className={`iziModal-overlay ${popup ? 'active' : ''}`}></div>

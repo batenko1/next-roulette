@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import getBalanceUser from "@/utils/balanceUser.js";
 
 export default async function handler(req, res) {
     const token = req.headers.authorization?.replace('Bearer ', '');
@@ -15,8 +16,11 @@ export default async function handler(req, res) {
         const userId = decodedToken.userId;
         const userEmail = decodedToken.userEmail;
 
+        const balance = await getBalanceUser(userId)
+
+
         // Здесь вы можете использовать идентификационные данные пользователя
-        return res.status(200).json({userId, userEmail});
+        return res.status(200).json({userId, userEmail, balance});
     } catch (error) {
         return res.status(200).json({message: 'Unauthorized'});
     }
