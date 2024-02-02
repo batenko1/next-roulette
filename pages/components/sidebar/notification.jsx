@@ -11,7 +11,6 @@ const Notification = () => {
 
     const handleChangeNotification = (value) => {
 
-        console.log(value, 'vlad')
         if(value) {
             localStorage.setItem('notification', 1)
             setNotification(true)

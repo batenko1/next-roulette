@@ -1,21 +1,23 @@
 import {useSelector} from "react-redux";
 import {selectPopup} from "@/state/popupSlice.js";
+import {selectUser} from "@/state/userSlice.js";
+
+import CloseModal from "@/pages/components/popups/CloseModal.jsx";
 const JackpotBet = () => {
     
     const popup = useSelector(selectPopup)
-    
+    const user = useSelector(selectUser)
+
     return (
         <div className={`modal modal--bet iziModal ${popup === 'jackpot-bet' ? 'active': ''}`} id="betModal">
             <div className="modal__top">
                 <h6 className="modal__title">СДЕЛАТЬ СТАВКУ</h6>
-                <a className="modal__close">
-                    <i className="ic-close"></i>
-                </a>
+                <CloseModal/>
             </div>
             <div className="modal__body">
                 <div className="conclusion__balance">
                     <p className="conclusion__balance-text">Текущий баланс:</p>
-                    <p className="conclusion__balance-value">0 <span>coins</span></p>
+                    <p className="conclusion__balance-value">{user?.balance} <span>coins</span></p>
                 </div>
                 <form className="bet__form">
 

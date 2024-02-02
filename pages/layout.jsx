@@ -30,7 +30,7 @@ const Layout = ({children}) => {
                         dispatch(setUser(data))
                     }
                 }).catch(() => {
-                    console.log('here')
+
                 })
         }
 

@@ -27,7 +27,6 @@ const io = new Server(httpServer, {
 io.on('connection', (socket) => {
 
     socket.on('dataUpdated', (data) => {
-        console.log(socket.id, 'текущей сокет')
         socket.broadcast.emit('dataUpdated', data);
 
     });
