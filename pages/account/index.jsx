@@ -102,8 +102,8 @@ const Index = () => {
                         <div className="nano-content">
                             <ul className="history__list">
 
-                                {transactions.map((item) => (
-                                    <li className="history__item hist-balance hist-balance--green">
+                                {transactions.map((item, index) => (
+                                    <li className="history__item hist-balance hist-balance--green" key={index}>
                                         <div className="hist-balance__left">
                                             <p className="hist-balance__sum"><i
                                                 className="ic-money-green"></i>0 Руб.</p>
