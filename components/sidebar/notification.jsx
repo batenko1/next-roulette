@@ -1,8 +1,10 @@
 import {useState, useEffect} from "react";
+import {useTranslation} from "react-i18next";
 
 const Notification = () => {
 
     const [notification, setNotification] = useState(false)
+    const {t} = useTranslation()
 
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const Notification = () => {
 
     return (
         <div className="notification">
-            <p className="notification__title">Звуковые уведомления</p>
+            <p className="notification__title">{t('Звуковые уведомления')}</p>
             <form className="notification__form">
                 <label className="notification__radio">
                     <input type="radio"
@@ -34,13 +36,13 @@ const Notification = () => {
                            name="sound"/>
 
                     <span className="notification__check"></span>
-                    <span className="notification__name">Включить</span>
+                    <span className="notification__name">{t('Включить')}</span>
                 </label>
                 <label className="notification__radio">
                     <input type="radio" id="isMusicFalse" onChange={(e) => handleChangeNotification(false)}
                            checked={!notification} name="sound"/>
                     <span className="notification__check"></span>
-                    <span className="notification__name">Выключить</span>
+                    <span className="notification__name">{t('Выключить')}</span>
                 </label>
             </form>
         </div>

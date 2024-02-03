@@ -1,5 +1,6 @@
 import {useRef, useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
+import {useTranslation} from "react-i18next";
 import MessagesChat from "@/components/chat/messagesChat.jsx";
 import FormChat from "@/components/chat/formChat";
 import {setPopup} from "@/state/popupSlice.js";
@@ -7,6 +8,7 @@ import {setPopup} from "@/state/popupSlice.js";
 const WrapperChat = () => {
 
     const dispatch = useDispatch()
+    const {t} = useTranslation()
 
     const wrapperChat = useRef(null)
     const [toggle, setToggle] = useState(false)
@@ -30,12 +32,12 @@ const WrapperChat = () => {
     return (
         <div className="main__right chat" ref={wrapperChat}>
             <div className="chat__top">
-                <p className="chat__title">ОНЛАЙН ЧАТ</p>
+                <p className="chat__title">{t('ОНЛАЙН ЧАТ')}</p>
                 <a href="#"
                    onClick={() => dispatch(setPopup('chatRules'))}
                    data-izimodal-open="#chatRules"
                    data-izimodal-transitionin="fadeInDown"
-                   className="chat__rules">Правила чата</a>
+                   className="chat__rules">{t('Правила чата')}</a>
                 <div onClick={() => setToggle(!toggle)} className="chat__close"></div>
             </div>
 

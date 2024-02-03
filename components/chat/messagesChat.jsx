@@ -1,7 +1,10 @@
 import React from "react";
+import Image from "next/image";
 import {useEffect, useRef} from "react";
 import {useSelector,useDispatch} from "react-redux";
 import {selectMessages, messagesList} from "@/state/messagesSlice.js";
+
+import Avatar from "../../public/images/chat_avatar3.png"
 
 
 const MessagesChat = React.memo(() => {
@@ -31,10 +34,10 @@ const MessagesChat = React.memo(() => {
                     <div className="chat__message message" key={key}>
                         <div className="message__top">
                             <div className="message__ava">
-                                <img src="" alt="avatar"/>
+                                <Image src={Avatar} alt="avatar"/>
                                 <span className="message__value">10</span>
                             </div>
-                            <p className="message__name message__name--icon">
+                            <p className="message__name message__name--icon" style={{paddingLeft: 30}}>
                                 <i className="ic-youtube"></i> Vlad</p>
                             <span className="message__time">14.30</span>
                         </div>

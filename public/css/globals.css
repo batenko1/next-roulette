@@ -9408,3 +9408,8 @@ body {
     width:120px;
     margin-top: 10px;
 }
+
+.winners__title.modal-hint__text {
+    font-size: 30px;
+    padding:50px 50px 50px 80px;
+}

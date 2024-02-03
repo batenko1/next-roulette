@@ -1,5 +1,8 @@
 import {useDispatch} from "react-redux";
 import Image from "next/image";
+import {useTranslation} from "react-i18next";
+
+
 import GooglePlay from '../public/images/google-play.png'
 import Avatar from '../public/images/winner.png'
 import GameCircle from '../public/images/new-game-circle.png'
@@ -16,11 +19,13 @@ export default function Home() {
 
     const dispatch = useDispatch()
 
+    const {t} = useTranslation()
+
     return (
         <>
             <div className="main__left">
                 <div className="rooms">
-                    <p className="rooms__title">Выбор комнаты:</p>
+                    <p className="rooms__title">{t('Выбор комнаты:')}</p>
                     <ul className="rooms__wrap">
                         <li className="rooms__link rooms__link--active"
                             data-game-id="1">CLASSIC
@@ -30,17 +35,17 @@ export default function Home() {
                         </li>
                     </ul>
                     <div id="roomClassic" className="rooms__box rooms__box--active">
-                        <p className="rooms__text">Минимальный размер ставки игрока от 300 coins</p>
+                        <p className="rooms__text">{t('Минимальный размер ставки игрока от 300 coins')}</p>
                     </div>
                     <div id="roomSmall" className="rooms__box rooms__box--">
-                        <p className="rooms__text">Максимальный размер ставки игрока до 300 coins</p>
+                        <p className="rooms__text">{t('Максимальный размер ставки игрока до 300 coins')}</p>
                     </div>
                 </div>
 
                 <div className="bank">
                     <div className="bank__info">
-                        <p className="bank__title">Банк:</p>
-                        <p className="bank__players">0 игроков</p>
+                        <p className="bank__title">{t('Банк:')}</p>
+                        <p className="bank__players">0 {t('игроков')}</p>
                     </div>
                     <div className="bank__body">
                         <div className="bank__circle">
@@ -53,7 +58,7 @@ export default function Home() {
                         </div>
                         <a className="button button--gradient bank__button"
                             onClick={() => dispatch(setPopup('jackpot-bet'))}
-                        >СДЕЛАТЬ СТАВКУ</a>
+                        >{t('СДЕЛАТЬ СТАВКУ')}</a>
                     </div>
                 </div>
 
@@ -67,7 +72,7 @@ export default function Home() {
 
 
                 <div className="application">
-                    <p className="application__title">Мобильное приложение</p>
+                    <p className="application__title">{t('Мобильное приложение')}</p>
                     <a href="#" className="application__link">
                         <Image src={GooglePlay} height="54" alt="test"></Image>
                     </a>
@@ -77,7 +82,7 @@ export default function Home() {
 
             <div className="main__center main__center--full">
                 <div className="rooms mobile-show">
-                    <p className="rooms__title">Выбор комнаты:</p>
+                    <p className="rooms__title">{t('Выбор комнаты:')}</p>
                     <ul className="rooms__wrap">
                         <li className="rooms__link rooms__link--active"
                             data-game-id="1">CLASSIC
@@ -87,19 +92,18 @@ export default function Home() {
                         </li>
                     </ul>
                     <div id="roomClassic" className="rooms__box rooms__box--active">
-                        <p className="rooms__text">Минимальный размер ставки игрока от 300 coins</p>
+                        <p className="rooms__text">{t('Минимальный размер ставки игрока от 300 coins')}</p>
                     </div>
                     <div id="roomSmall" className="rooms__box">
-                        <p className="rooms__text">Максимальный размер ставки игрока до 300 coins</p>
+                        <p className="rooms__text">{t('Максимальный размер ставки игрока до 300 coins')}</p>
                     </div>
                 </div>
 
 
                 <div className="bank mobile-show">
                     <div className="bank__info">
-                        <p className="bank__title">Банк:</p>
-                        <p className="bank__players"> 0
-                            игроков</p>
+                        <p className="bank__title">{t('Банк:')}</p>
+                        <p className="bank__players"> 0 {t('игроков')}</p>
                     </div>
                     <div className="bank__body">
                         <div className="bank__circle">
@@ -110,7 +114,7 @@ export default function Home() {
                             </div>
                         </div>
                         <a className="button button--gradient bank__button" data-izimodal-open="#betModal"
-                           data-izimodal-transitionin="fadeInDown">СДЕЛАТЬ СТАВКУ</a>
+                           data-izimodal-transitionin="fadeInDown">{t('СДЕЛАТЬ СТАВКУ')}</a>
                     </div>
                 </div>
 
@@ -118,12 +122,10 @@ export default function Home() {
                 <div className="wrap-first-step">
                     <div className="winners">
                         <a href="#" className="winners__game">#1</a>
-                        <h5 className="winners__title">Игроки</h5>
+                        <h5 className="winners__title">{t('Игроки')}</h5>
                         <div className="winners__slider">
 
-                            <h1 className="winners__title modal-hint__text"
-                                style={{fontSize: "30px", padding: "50px", paddingLeft: "80px"}}>Ждем участников игры
-                                !!!</h1>
+                            <h1 className="winners__title modal-hint__text">{t('Ждем участников игры !!!')}</h1>
                         </div>
                     </div>
 
@@ -134,7 +136,7 @@ export default function Home() {
                                 <span></span>
                             </div>
                             <div className="jackpot-timer__center">
-                                <p className="jackpot-timer__title">До начала</p>
+                                <p className="jackpot-timer__title">{t('До начала')}</p>
 
                                 <p id="jackpotTimer" className="jackpot-timer__time">
                                     00:00</p>
@@ -148,7 +150,7 @@ export default function Home() {
 
                 <div className="choose-winner ">
                     <a href="#" className="choose-winner__game">Classic #1</a>
-                    <h5 className="choose-winner__title">ВЫБИРАЕМ ПОБЕДИТЕЛЯ</h5>
+                    <h5 className="choose-winner__title">{t('ВЫБИРАЕМ ПОБЕДИТЕЛЯ')}</h5>
                     <div className="wrap-choose-winner-slider">
                         <div className="choose-winner__slider"></div>
                     </div>
@@ -159,10 +161,10 @@ export default function Home() {
 
 
                 <div className="winner winner-step-3 ">
-                    <h5 className="winner__title">ПОБЕДИТЕЛЬ</h5>
+                    <h5 className="winner__title">{t('ПОБЕДИТЕЛЬ')}</h5>
                     <div className="winner__wrap">
                         <div className="winner__left winner-circle">
-                            <p className="winner-circle__text">ШАНС ВЫИГРЫША</p>
+                            <p className="winner-circle__text">{t('ШАНС ВЫИГРЫША')}</p>
                             <span
                                 className="winner-circle__numbers winner-percent">10%</span>
                         </div>
@@ -183,7 +185,7 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="winner__right winner-circle">
-                            <p className="winner-circle__text">СЧАСЛИВЫЙ БИЛЕТ</p>
+                            <p className="winner-circle__text">{t('СЧАСЛИВЫЙ БИЛЕТ')}</p>
                             <span className="winner-circle__numbers winner-number"><i
                                 className="ic-dollar"></i> 12</span>
                         </div>
@@ -197,8 +199,8 @@ export default function Home() {
                         <div className="jackpot-history-bottom__left">
                             <Image src={GameCircle} className="jackpot-history__img" alt="site"></Image>
                             <div className="jackpot-history__wrap">
-                                <p className="jackpot-history__title">Игра началась, делайте ваши депозиты</p>
-                                <p className="jackpot-history__hash">Хэш раунда Sha224 <a
+                                <p className="jackpot-history__title">{t('Игра началась, делайте ваши депозиты')}</p>
+                                <p className="jackpot-history__hash">{t('Хэш раунда')} Sha224 <a
                                     href="#"
                                     target="blank">Test</a>
                                 </p>
@@ -206,7 +208,7 @@ export default function Home() {
                         </div>
                         <div className="jackpot-history-bottom__right ">
                             <a data-izimodal-open="#betModal" data-izimodal-transitionin="fadeInDown"
-                               className="jackpot-history__button">СДЕЛАТЬ СТАВКУ</a>
+                               className="jackpot-history__button">{t('СДЕЛАТЬ СТАВКУ')}</a>
                         </div>
                     </div>
                     <div className="jackpot-history__wrapper nano">
@@ -214,8 +216,8 @@ export default function Home() {
                             <div className="jackpot-history-top">
                                 <Image src={TimeOutCircle} className="jackpot-history__img" alt="site"></Image>
                                 <div className="jackpot-history__wrap">
-                                    <p className="jackpot-history__title">ВРЕМЯ СТАВОК ИСТЕКЛО</p>
-                                    <p className="jackpot-history__hint">Игра уже начинается!</p>
+                                    <p className="jackpot-history__title">{t('ВРЕМЯ СТАВОК ИСТЕКЛО')}</p>
+                                    <p className="jackpot-history__hint">{t('Игра уже начинается!')}</p>
                                 </div>
                             </div>
                             <ul className="jackpot-history__list">

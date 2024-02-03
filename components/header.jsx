@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from 'next/link'
 import useTheme from "@/hooks/useTheme.js";
 import Logo from "../public/images/logo.png"
+import Avatar from "../public/images/chat_avatar3.png"
 import {setPopup} from "@/state/popupSlice.js";
 import {setUser, selectUser} from "@/state/userSlice.js";
 
@@ -108,7 +109,7 @@ const Header = () => {
                 (
                     <div className="header__right user">
                         <div className="user__ava">
-                            <img src="" alt="avatar"/>
+                            <Image src={Avatar} alt="avatar"/>
                         </div>
                         <div className="user__info">
                             <span className="user__level">10 LVL.</span>
