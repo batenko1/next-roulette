@@ -1,3 +1,4 @@
+import {useState} from "react";
 
 import Balance from "@/components/sidebar/balance.jsx";
 import Help from "@/components/sidebar/help.jsx";
@@ -6,6 +7,9 @@ import Copyright from "@/components/sidebar/copyright.jsx";
 
 
 const Index = () => {
+
+    const [transactions, setTransactions] = useState([])
+
 
     return (
         <main className="main">
@@ -63,10 +67,10 @@ const Index = () => {
                         </div>
                         <div className="referral__right ref-link">
                             <form className="ref-link__promo">
-                                <input type="text" name="promo" className="ref-link__promo-field"
+                                <input type="text" name="promo" defaultValue="" className="ref-link__promo-field"
                                        placeholder="Введите промокод"/>
-                                    <a id="promoActive"
-                                       className="button ref-link__promo-button">Активировать</a>
+                                <a id="promoActive"
+                                   className="button ref-link__promo-button">Активировать</a>
                             </form>
                             <p className="ref-link__title">Получайте бонусы с рефералов!</p>
                             <div className="ref-link__wrap">
@@ -77,10 +81,9 @@ const Index = () => {
                             </div>
                             <a id="showNotify"
                                className="ref-link__link">Link</a>
-                            <input type="text" id="showNotifyInput" className="ref-link__link--hidden"
-                                   value=""/>
-                                <p className="ref-link__stock">Делитесь ссылкой с друзьями и получайте реферальные
-                                    начисления!</p>
+                            <input type="text" id="showNotifyInput" defaultValue="" className="ref-link__link--hidden"/>
+                            <p className="ref-link__stock">Делитесь ссылкой с друзьями и получайте реферальные
+                                начисления!</p>
                         </div>
                     </div>
                 </div>
@@ -99,17 +102,19 @@ const Index = () => {
                         <div className="nano-content">
                             <ul className="history__list">
 
-                                <li className="history__item hist-balance hist-balance--green">
-                                    <div className="hist-balance__left">
-                                        <p className="hist-balance__sum"><i
-                                            className="ic-money-green"></i>0 Руб.</p>
-                                    </div>
-                                    <div className="hist-balance__right">
-                                        <p className="hist-balance__source">Stripe</p>
+                                {transactions.map((item) => (
+                                    <li className="history__item hist-balance hist-balance--green">
+                                        <div className="hist-balance__left">
+                                            <p className="hist-balance__sum"><i
+                                                className="ic-money-green"></i>0 Руб.</p>
+                                        </div>
+                                        <div className="hist-balance__right">
+                                            <p className="hist-balance__source">Stripe</p>
 
-                                        <p className="hist-balance__data">Date</p>
-                                    </div>
-                                </li>
+                                            <p className="hist-balance__data">Date</p>
+                                        </div>
+                                    </li>
+                                ))}
 
 
 

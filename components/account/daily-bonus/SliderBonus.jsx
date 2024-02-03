@@ -1,8 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useReplenish} from "@/hooks/useReplenish.js";
-import {selectUser, setUser} from "@/state/userSlice.js";
+import {selectUser} from "@/state/userSlice.js";
 import {useSelector} from "react-redux";
 import '@/public/css/roulette.css'
+import calculateTimeDifference from "@/functions/calculateTimeDifference.js";
+import startCountdown from "@/functions/startCountDown.js";
 
 const SliderBonus = () => {
 
@@ -23,7 +25,7 @@ const SliderBonus = () => {
         let bets = [];
 
         for (var i = 0; i < 1000; i++) {
-            var num = Math.floor(Math.random() * (20 - 0) + 0);
+            var num = Math.floor(Math.random() * (20));
 
             if (num % 2 === 0) bet = {color: "orange", count: 10};
             if (num % 3 === 0) bet = {color: "green", count: 25};
@@ -54,9 +56,9 @@ const SliderBonus = () => {
 
                 if(existBonus) {
                     setAccessBonus(true)
+                    const {hours, minutes, seconds} = calculateTimeDifference(new Date(existBonus.created_at), new Date())
+                    startCountdown(hours, minutes, seconds)
 
-
-                    setTimer(calculateTimeDifference(new Date(existBonus.created_at), new Date()))
                 }
 
             })
@@ -66,29 +68,6 @@ const SliderBonus = () => {
     }, [user])
 
 
-    const calculateTimeDifference = (start, end) => {
-        // Перевести даты в миллисекунды
-        const startTime = start.getTime();
-        const endTime = end.getTime();
-
-        // Вычислить разницу в миллисекундах
-        const seconds = 86400 - Math.floor(Math.abs(endTime - startTime) / 1000);
-
-        // Разделить секунды на 60, чтобы получить минуты
-        const minutes = Math.floor(seconds / 60);
-
-        const hours = Math.floor(minutes / 60);
-
-        const remainingMinutes = minutes % 60;
-
-        const remainingSeconds = seconds % 60;
-
-        return {
-            minutes: remainingMinutes,
-            hours,
-            seconds:remainingSeconds
-        };
-    }
 
 
     const spin = () => {
@@ -164,7 +143,7 @@ const SliderBonus = () => {
                             </div>
                             <div className="get-bonus__bottom">
                                 <p className="get-bonus__info"
-                                >Следующий бонус будет доступен через: {`${timer.hours}:${timer.minutes}:${timer.seconds}`}</p>
+                                >Следующий бонус будет доступен через: <span id="timerBonus">-</span></p>
                             </div>
                         </div>
                     </>
